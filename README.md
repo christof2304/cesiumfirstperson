@@ -104,6 +104,12 @@ The adaptive system automatically switches between presets based on your FPS.
 - 4-6 GB VRAM recommended
 - Cesium ion account (free tier works)
 
+## 💡 Tips
+
+- **Slow loading?** Google 3D Tiles load faster during off-peak hours. First load takes longer – tiles are cached afterwards.
+- **Low FPS?** Press **Q** to switch to a lower quality preset, or let the adaptive system handle it automatically.
+- **Gamepad not detected?** Press any button on your controller, then click the "Detect" button in the UI.
+
 ## 📄 License
 
 MIT License – feel free to use, modify, and share.

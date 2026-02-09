@@ -118,7 +118,7 @@ MIT License – feel free to use, modify, and share.
 
 **Christof Lorenz**
 
-- 💼 [LinkedIn](https://linkedin.com/in/YOUR-PROFILE)
+- 💼 [LinkedIn](www.linkedin.com/in/christoflorenz)
 - 📧 christof2304@gmail.com
 
 ---

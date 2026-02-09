@@ -118,9 +118,8 @@ MIT License – feel free to use, modify, and share.
 
 **Christof Lorenz**
 
-- 🌐 [geobim.app](https://geobim.app)
 - 💼 [LinkedIn](https://linkedin.com/in/YOUR-PROFILE)
-- 📧 info@geobim.app
+- 📧 christof2304@gmail.com
 
 ---
 

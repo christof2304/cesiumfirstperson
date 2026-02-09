@@ -532,6 +532,10 @@ const InputSystem = {
   },
   
   onKeyDown(e) {
+    // Ignore shortcuts when typing in input fields
+    const tag = document.activeElement?.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
+    
     const k = e.key.toLowerCase();
     if (k === "c") { e.preventDefault(); this.toggleFirstPerson(); return; }
     if (k === "x") { e.preventDefault(); ShadowSystem.toggle(); return; }

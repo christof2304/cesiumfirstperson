@@ -103,8 +103,8 @@ const LoadingSystem = {
     this.container.innerHTML = `
       <div style="text-align:center;">
         <div style="font-size:48px; margin-bottom:8px;">🚀</div>
-        <h2 style="margin:6px 0;">High Performance Mode</h2>
-        <p style="margin:6px 0; opacity:0.9;">6GB VRAM Optimized • Google 3D Tiles</p>
+        <h2 style="margin:6px 0;">Max Performance Mode</h2>
+        <p style="margin:6px 0; opacity:0.9;">Optimized for Recording • Google 3D Tiles</p>
         <div style="width:320px; height:8px; background: rgba(255,255,255,0.2); border-radius:4px; margin:18px auto; overflow:hidden;">
           <div id="loading-progress-bar" style="width:0%; height:100%; background:white; transition:width 0.25s;"></div>
         </div>
@@ -193,7 +193,7 @@ const UISystem = {
     `;
     panel.innerHTML = `
       <strong style="color:#4FC3F7;font-size:15px;">📍 Battery Park, NYC</strong><br>
-      <span style="color:#4CAF50;font-size:11px;">🚀 ${CONFIG.performanceProfile} • HIGH Quality</span><br><br>
+      <span style="color:#4CAF50;font-size:11px;">🚀 MAX PERFORMANCE MODE</span><br><br>
       <button id="toggle-fp-btn" style="width:100%;padding:10px;margin-bottom:10px;background:#4CAF50;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;font-size:14px;">🎮 Activate First-Person (C)</button>
       <button id="toggle-shadows-btn" style="width:100%;padding:10px;margin-bottom:10px;background:#2196F3;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;font-size:14px;">☀️ Enable Shadows (X)</button>
       <button id="cycle-quality-btn" style="width:100%;padding:10px;margin-bottom:10px;background:#9C27B0;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;font-size:14px;">🎚️ Quality: HIGH (Q)</button>
@@ -781,15 +781,15 @@ const ShadowSystem = {
   try {
     console.log("=== Starting Cesium (6GB VRAM Optimized) ===");
     
-    // Create Viewer
+    // Create Viewer - MAX PERFORMANCE
     const viewer = new Cesium.Viewer("cesiumContainer", {
-      timeline: true,
-      animation: true,
+      timeline: false,
+      animation: false,
       shadows: false,
       terrainShadows: Cesium.ShadowMode.DISABLED,
       targetFrameRate: CONFIG.viewer.targetFrameRate,
       useBrowserRecommendedResolution: false,
-      msaaSamples: 2  // Increased for better quality
+      msaaSamples: 1  // Reduced for max performance
     });
     
     const scene = viewer.scene;
@@ -806,23 +806,22 @@ const ShadowSystem = {
     // Remove default imagery
     try { viewer.imageryLayers.removeAll(); } catch(e) {}
     
-    // Configure globe
+    // Configure globe - MAX PERFORMANCE
     globe.baseColor = Cesium.Color.fromCssColorString('#0a0a0a');
-    globe.enableLighting = true;
-    globe.dynamicAtmosphereLighting = true;
-    globe.showGroundAtmosphere = true;  // ON for better visuals
-    globe.tileCacheSize = 1000;         // INCREASED - uses 64GB RAM
-    globe.maximumScreenSpaceError = 2;  // LOWER
+    globe.enableLighting = false;           // OFF for performance
+    globe.dynamicAtmosphereLighting = false;
+    globe.showGroundAtmosphere = false;     // OFF for performance
+    globe.tileCacheSize = 1000;
+    globe.maximumScreenSpaceError = 2;
     
-    scene.skyAtmosphere.show = true;
-    scene.highDynamicRange = true;
-    scene.fxaa = true;
-    scene.fog.enabled = true;
-    scene.fog.density = 0.0001;  // Reduced
+    scene.skyAtmosphere.show = false;       // OFF for performance
+    scene.highDynamicRange = false;         // OFF for performance
+    scene.fxaa = false;                     // OFF for performance
+    scene.fog.enabled = false;              // OFF for performance
     
     // Loading screen
     const loadingScreen = LoadingSystem.create();
-    loadingScreen.update(10, "Loading Google 3D Tiles (HIGH quality)...");
+    loadingScreen.update(10, "Loading Google 3D Tiles (MAX PERFORMANCE)...");
     
     // Configure skybox
     scene.skyBox = new Cesium.SkyBox({
@@ -836,10 +835,9 @@ const ShadowSystem = {
       }
     });
     
-    scene.sun = new Cesium.Sun();
-    scene.moon = new Cesium.Moon();
+    // Minimal lighting - MAX PERFORMANCE
     scene.light = new Cesium.SunLight();
-    scene.light.intensity = 0.5;  // Lower for shadows OFF
+    scene.light.intensity = 2.0;
     
     // Configure clock
     const start = Cesium.JulianDate.now();

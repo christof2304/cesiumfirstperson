@@ -102,7 +102,6 @@ The adaptive system automatically switches between presets based on your FPS.
 - Modern browser (Chrome, Edge, Firefox)
 - WebGL 2.0 support
 - 4-6 GB VRAM recommended
-- Cesium ion account (free tier works)
 
 ## 💡 Tips
 
@@ -118,7 +117,7 @@ MIT License – feel free to use, modify, and share.
 
 **Christof Lorenz**
 
-- 💼 [LinkedIn](www.linkedin.com/in/christoflorenz)
+- 💼 [LinkedIn](https://linkedin.com/in/christoflorenz)
 - 📧 christof2304@gmail.com
 
 ---
